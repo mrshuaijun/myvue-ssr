@@ -1,4 +1,17 @@
-# myvue-ssr
+# development
+npm run client:dev
+
+npm run client:server
+
+npm run server:dev
+
+npm run server:start
+
+
+
+
+## production
 npm run prod
 
-npm run analyzer
+## 运行
+npm run server:start
