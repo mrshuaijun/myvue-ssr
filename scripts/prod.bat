@@ -1,0 +1,1 @@
+webpack --mode production && webpack --mode production --env server && cross-env NODE_ENV=production gulp

@@ -1,0 +1,1 @@
+webpack --mode development --env server --watch
