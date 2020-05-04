@@ -1,7 +1,8 @@
 # 介绍
 使用webpack+gulp做前端构建，服务端使用nestjs
 
-
+# step one
+npm i
 
 # development
 npm run client:dev
