@@ -1,4 +1,7 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const {
+  CleanWebpackPlugin
+} = require('clean-webpack-plugin')
 const vueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 const path = require('path')
 const rootPath = path.join(__dirname, "..")
@@ -20,6 +23,9 @@ module.exports = {
     }
   },
   plugins: [
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: [rootPath + 'dist']
+    }),
     new vueSSRClientPlugin()
   ]
 }

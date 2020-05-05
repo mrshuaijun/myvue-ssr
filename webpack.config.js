@@ -14,9 +14,6 @@ const _modeflag = _mode === 'production' ? true : false
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const {
-  CleanWebpackPlugin
-} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
@@ -77,9 +74,7 @@ const baseConfig = {
     ]
   },
   plugins: [
-    // new CleanWebpackPlugin({
-    //   cleanAfterEveryBuildPatterns: ['dist/static']
-    // }),
+
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: _modeflag ? 'static/css/[name].[hash:5].css' : 'static/css/[name].css',
@@ -88,16 +83,16 @@ const baseConfig = {
     // 编译进度条显示
     new ProgressBarPlugin(),
     // 编译完成通知
-    new WebpackBuildNotifierPlugin({
-      title: 'my-vue-ssr',
-      // logo: path.resolve("./img/favicon.png"),
-      suppressSuccess: true
-    }),
+    // new WebpackBuildNotifierPlugin({
+    //   title: 'my-vue-ssr',
+    //   // logo: path.resolve("./img/favicon.png"),
+    //   suppressSuccess: true
+    // }),
     new HtmlWebpackPlugin({
       title: '我的vue-ssr',
       filename: 'index.html',
       template: path.resolve(__dirname, './public/index.html'),
-      favicon: path.resolve(__dirname, './src/webapp/assets/favicon.ico'),
+      favicon: path.resolve(__dirname, './public/favicon.ico'),
       minify: {
         //压缩HTML文件
         removeComments: false, //移除HTML中的注释
@@ -122,10 +117,10 @@ const baseConfig = {
     quiet: true
   },
   // 引入外部资源 打包使用cdn 减少包大小
-  // externals: {
-  //   vue: 'Vue',
-  //   vuex: 'Vuex',
-  //   'vue-router': 'VueRouter'
-  // }
+  externals: {
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter'
+  }
 }
 module.exports = merge(baseConfig, _mergeConfig)
